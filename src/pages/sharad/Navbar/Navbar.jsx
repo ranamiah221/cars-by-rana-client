@@ -4,7 +4,9 @@ const Navbar = () => {
     const navLinks= <>
              
                   <li> <NavLink className='mr-2' to='/'>Home</NavLink></li> 
-                  <li> <NavLink className='' to='/about '>About</NavLink></li>          
+                  {/* <li> <NavLink className='' to='/about '>About</NavLink></li> 
+                 */}
+                 <li><NavLink to='/login'>Login</NavLink></li>
     </>
   return (
     <div className="navbar ">
