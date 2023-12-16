@@ -1,18 +1,35 @@
 import { Link } from 'react-router-dom';
-import login from '../../assets/images/login/login.svg'
+import loginPic from '../../assets/images/login/login.svg'
+import { useContext } from 'react';
+import { AuthContext } from '../provider/AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 const Login = () => {
+  const{login}= useContext(AuthContext);
   const handleLogin=(event)=>{
     event.preventDefault();
     const form = event.target;
     const email= form.email.value;
     const password= form.password.value;
-    const userInfo={email, password};
-    console.log(userInfo);
+    login(email, password)
+    .then(result=>{
+      console.log(result.user);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Sign up successful",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+    .catch(error=>{
+      console.log(error);
+    })
+    
   }
   return (
     <div className="hero min-h-screen flex justify-between items-center px-16">
         <div className="w-1/2">
-            <img src={login} alt="" />
+            <img src={loginPic} alt="" />
         </div>
         <div className="card shrink-0 w-1/2 max-w-sm shadow-2xl bg-base-100">
             <h2 className='text-2xl font-medium text-center mt-4'>Sign In</h2> 
