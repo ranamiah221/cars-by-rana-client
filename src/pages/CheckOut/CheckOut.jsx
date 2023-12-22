@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const CheckOut = () => {
   const service = useLoaderData();
@@ -34,8 +35,15 @@ const CheckOut = () => {
     })
     .then(res=>res.json())
     .then(data=>{
-        console.log(data);
-        // sweet alert...
+        if(data.insertedId)
+        {
+          Swal.fire({
+            title: "Good job!",
+            text: "Your order request successful",
+            icon: "success"
+          });
+        };
+        
     })
   }
   return (
