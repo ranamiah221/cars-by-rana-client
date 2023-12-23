@@ -22,7 +22,10 @@ const Navbar = () => {
              
                   <li> <NavLink className='mr-2' to='/'>Home</NavLink></li> 
                  {
-                  user ?.email ?  <li><button onClick={handleLogOut} className="btn btn-ghost">Log Out</button></li> :
+                  user ?.email ?  <>
+                  <li><Link to='/bookings'>My Bookings</Link></li>
+                  <li><button onClick={handleLogOut} className="btn btn-ghost">Log Out</button></li>
+                  </> :
                    <li><NavLink to='/login'>Login</NavLink></li>
                  }
                 
