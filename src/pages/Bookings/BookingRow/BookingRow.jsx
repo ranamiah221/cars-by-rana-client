@@ -1,9 +1,15 @@
-const BookingRow = ({ booking }) => {
-  const { date, name, img, email } = booking;
+
+
+const BookingRow = ({ booking, handleDelete }) => {
+  const { date, name, img, email, _id } = booking;
+  
   return (
     <tr>
       <th>
-        <button className="btn btn-circle btn-outline">
+        <button
+          onClick={() => handleDelete(_id)}
+          className="btn btn-circle btn-outline"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -24,9 +30,7 @@ const BookingRow = ({ booking }) => {
         <div className="flex items-center gap-3">
           <div className="avatar">
             <div className="mask mask-squircle w-20 h-20">
-              {
-                img && <img src={img} alt="Avatar Tailwind CSS Component" />
-              }
+              {img && <img src={img} alt="Avatar Tailwind CSS Component" />}
             </div>
           </div>
         </div>
