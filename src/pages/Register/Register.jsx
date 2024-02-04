@@ -15,9 +15,11 @@ const Register = () => {
     createUser(email,password)
     .then(result=>{
       console.log(result.user)
+      alert('user create successful');
     })
     .catch(error=>{
       console.log(error);
+      alert(`${error} try again`);
     })
     
   }
